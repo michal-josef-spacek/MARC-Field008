@@ -14,7 +14,7 @@ use Data::MARC::Field008::Music;
 use Data::MARC::Field008::VisualMaterial;
 use Error::Pure qw(err);
 use List::Util 1.33 qw(any);
-use Mo::utils 0.08 qw(check_isa check_required);
+use Mo::utils 0.08 qw(check_bool check_isa check_required);
 use Scalar::Util qw(blessed);
 
 our $VERSION = 0.01;
@@ -35,8 +35,12 @@ sub new {
 	# Process parameters.
 	set_params($self, @params);
 
+	# Check 'leader'.
 	check_required($self, 'leader');
 	check_isa($self, 'leader', 'Data::MARC::Leader');
+
+	# Check 'verbose'.
+	check_bool($self, 'verbose');
 
 	return $self;
 }
