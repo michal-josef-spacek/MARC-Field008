@@ -18,5 +18,6 @@ META.yml
 README
 t/MARC-Field008/01-use.t
 t/MARC-Field008/02-version.t
+t/MARC-Field008/03-new.t
 xt/MARC-Field008/01-pod_coverage.t
 xt/MARC-Field008/02-pod.t
