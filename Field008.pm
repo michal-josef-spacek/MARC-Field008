@@ -183,7 +183,6 @@ sub _parse_different {
 		&& (any { $self->{'leader'}->bibliographic_level eq $_ } qw(b i s))) {
 
 		my %mat_params = (
-			'material_type' => 'continuing_resource',
 			'frequency' => substr($field_008, 18, 1),
 			'regularity' => substr($field_008, 19, 1),
 			'type_of_continuing_resource' => substr($field_008, 21, 1),
@@ -205,7 +204,6 @@ sub _parse_different {
 	# Visual Materials
 	} elsif (any { $self->{'leader'}->type eq $_ } qw(g k o r)) {
 		my %mat_params = (
-			'material_type' => 'visual_material',
 			'running_time_for_motion_pictures_and_videorecordings' => substr($field_008, 18, 3),
 			'target_audience' => substr($field_008, 22, 1),
 			'government_publication' => substr($field_008, 28, 1),
@@ -222,7 +220,6 @@ sub _parse_different {
 	# Mixed Materials
 	} elsif ($self->{'leader'}->type eq 'p') {
 		my %mat_params = (
-			'material_type' => 'mixed_material',
 			'form_of_item' => substr($field_008, 23, 1),
 		);
 		my $material = Data::MARC::Field008::MixedMaterial->new(%mat_params);
