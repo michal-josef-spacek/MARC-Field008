@@ -93,8 +93,7 @@ sub serialize {
 		$field_008_obj->date1.
 		$field_008_obj->date2.
 		$field_008_obj->place_of_publication.
-		# TODO
-		(' ' x 16).
+		$self->_serialize_different($field_008_obj->material).
 		$field_008_obj->language.
 		$field_008_obj->modified_record.
 		$field_008_obj->cataloging_resource;
@@ -247,6 +246,31 @@ sub _parse_different {
 	}
 
 	return %params;
+}
+
+sub _serialize_different {
+	my ($self, $material) = @_;
+
+	# Book
+	# TODO Remove
+	my $ret = (' ' x 16);
+	if ($material->isa('Data::MARC::Field008::Book')) {
+		# TODO
+	} elsif ($material->isa('Data::MARC::Field008::ComputerFile')) {
+		# TODO
+	} elsif ($material->isa('Data::MARC::Field008::ContinuingResource')) {
+		# TODO
+	} elsif ($material->isa('Data::MARC::Field008::Map')) {
+		# TODO
+	} elsif ($material->isa('Data::MARC::Field008::MixedMaterial')) {
+		$ret = (' ' x 5).$material->form_of_item.(' ' x 10);
+	} elsif ($material->isa('Data::MARC::Field008::Music')) {
+		# TODO
+	} elsif ($material->isa('Data::MARC::Field008::VisualMaterial')) {
+		# TODO
+	}
+
+	return $ret;
 }
 
 1;
