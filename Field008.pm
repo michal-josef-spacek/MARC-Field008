@@ -122,7 +122,7 @@ sub _parse_different {
 			'literary_form' => substr($field_008, 33, 1),
 			'biography' => substr($field_008, 34, 1),
 
-			'raw' => substr($field_008, 18, 16),
+			'raw' => substr($field_008, 18, 17),
 		);
 		my $material = Data::MARC::Field008::Book->new(%mat_params);
 		%params = (
@@ -138,7 +138,7 @@ sub _parse_different {
 			'type_of_computer_file' => substr($field_008, 26, 1),
 			'government_publication' => substr($field_008, 28, 1),
 
-			'raw' => substr($field_008, 18, 16),
+			'raw' => substr($field_008, 18, 17),
 		);
 		my $material = Data::MARC::Field008::ComputerFile->new(%mat_params);
 		%params = (
@@ -157,7 +157,7 @@ sub _parse_different {
 			'index' => substr($field_008, 31, 1),
 			'special_format_characteristics' => substr($field_008, 33, 2),
 
-			'raw' => substr($field_008, 18, 16),
+			'raw' => substr($field_008, 18, 17),
 		);
 		my $material = Data::MARC::Field008::Map->new(%mat_params);
 		%params = (
@@ -177,7 +177,7 @@ sub _parse_different {
 			'literary_text_for_sound_recordings' => substr($field_008, 30, 2),
 			'transposition_and_arrangement' => substr($field_008, 33, 1),
 
-			'raw' => substr($field_008, 18, 16),
+			'raw' => substr($field_008, 18, 17),
 		);
 		my $material = Data::MARC::Field008::Music->new(%mat_params);
 		%params = (
@@ -202,7 +202,7 @@ sub _parse_different {
 			'original_alphabet_or_script_of_title' => substr($field_008, 33, 1),
 			'entry_convention' => substr($field_008, 34, 1),
 
-			'raw' => substr($field_008, 18, 16),
+			'raw' => substr($field_008, 18, 17),
 		);
 		my $material = Data::MARC::Field008::ContinuingResource->new(%mat_params);
 		%params = (
@@ -220,7 +220,7 @@ sub _parse_different {
 			'type_of_visual_material' => substr($field_008, 33, 1),
 			'technique' => substr($field_008, 34, 1),
 
-			'raw' => substr($field_008, 18, 16),
+			'raw' => substr($field_008, 18, 17),
 		);
 		my $material = Data::MARC::Field008::VisualMaterial->new(%mat_params);
 		%params = (
@@ -233,7 +233,7 @@ sub _parse_different {
 		my %mat_params = (
 			'form_of_item' => substr($field_008, 23, 1),
 
-			'raw' => substr($field_008, 18, 16),
+			'raw' => substr($field_008, 18, 17),
 		);
 		my $material = Data::MARC::Field008::MixedMaterial->new(%mat_params);
 		%params = (
