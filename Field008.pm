@@ -124,6 +124,7 @@ sub _parse_different {
 
 			'raw' => substr($field_008, 18, 17),
 		);
+		$Data::MARC::Field008::Book::STRICT = 0;
 		my $material = Data::MARC::Field008::Book->new(%mat_params);
 		%params = (
 			'material' => $material,
@@ -140,6 +141,7 @@ sub _parse_different {
 
 			'raw' => substr($field_008, 18, 17),
 		);
+		$Data::MARC::Field008::ComputerFile::STRICT = 0;
 		my $material = Data::MARC::Field008::ComputerFile->new(%mat_params);
 		%params = (
 			'material' => $material,
@@ -159,6 +161,7 @@ sub _parse_different {
 
 			'raw' => substr($field_008, 18, 17),
 		);
+		$Data::MARC::Field008::Map::STRICT = 0;
 		my $material = Data::MARC::Field008::Map->new(%mat_params);
 		%params = (
 			'material' => $material,
@@ -179,6 +182,7 @@ sub _parse_different {
 
 			'raw' => substr($field_008, 18, 17),
 		);
+		$Data::MARC::Field008::Music::STRICT = 0;
 		my $material = Data::MARC::Field008::Music->new(%mat_params);
 		%params = (
 			'material' => $material,
@@ -204,6 +208,7 @@ sub _parse_different {
 
 			'raw' => substr($field_008, 18, 17),
 		);
+		$Data::MARC::Field008::ContinuingResource::STRICT = 0;
 		my $material = Data::MARC::Field008::ContinuingResource->new(%mat_params);
 		%params = (
 			'material' => $material,
@@ -222,6 +227,7 @@ sub _parse_different {
 
 			'raw' => substr($field_008, 18, 17),
 		);
+		$Data::MARC::Field008::VisualMaterial::STRICT = 0;
 		my $material = Data::MARC::Field008::VisualMaterial->new(%mat_params);
 		%params = (
 			'material' => $material,
@@ -235,6 +241,7 @@ sub _parse_different {
 
 			'raw' => substr($field_008, 18, 17),
 		);
+		$Data::MARC::Field008::MixedMaterial::STRICT = 0;
 		my $material = Data::MARC::Field008::MixedMaterial->new(%mat_params);
 		%params = (
 			'material' => $material,
