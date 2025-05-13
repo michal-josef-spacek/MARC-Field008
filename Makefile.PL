@@ -20,7 +20,16 @@ readme_from 'Field008.pm';
 recursive_author_tests('xt');
 requires 'Class::Utils' => 0.03;
 requires 'Data::MARC::Field008' => 0;
+requires 'Data::MARC::Field008::Book' => 0;
+requires 'Data::MARC::Field008::ComputerFile' => 0;
+requires 'Data::MARC::Field008::ContinuingResource' => 0;
+requires 'Data::MARC::Field008::Map' => 0;
+requires 'Data::MARC::Field008::MixedMaterial' => 0;
+requires 'Data::MARC::Field008::Music' => 0;
+requires 'Data::MARC::Field008::VisualMaterial' => 0;
 requires 'Error::Pure' => 0;
+requires 'List::Util' => 1.33;
+requires 'Mo::utils' => 0.08;
 requires 'Scalar::Util' => 0;
 resources 'bugtracker' => 'https://github.com/michal-josef-spacek/MARC-Field008/issues',
 resources 'homepage' => 'https://github.com/michal-josef-spacek/MARC-Field008';
