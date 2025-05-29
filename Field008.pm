@@ -74,7 +74,7 @@ sub parse {
 		$self->_parse_different($field_008),
 		'language' => (substr $field_008, 35, 3),
 		'modified_record' => (substr $field_008, 38, 1),
-		'cataloging_resource' => (substr $field_008, 39, 1),
+		'cataloging_source' => (substr $field_008, 39, 1),
 	);
 
 	return Data::MARC::Field008->new(%params);
@@ -96,7 +96,7 @@ sub serialize {
 		$self->_serialize_different($field_008_obj->material).
 		$field_008_obj->language.
 		$field_008_obj->modified_record.
-		$field_008_obj->cataloging_resource;
+		$field_008_obj->cataloging_source;
 
 	return $field_008;
 }
