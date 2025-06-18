@@ -10,7 +10,8 @@ use Test::More 'tests' => 5;
 use Test::NoWarnings;
 
 # Test.
-my $leader = MARC::Leader->new->parse('02816njm a2200697 i 4500');
+## cnb000000096
+my $leader = MARC::Leader->new->parse('     nam a22        4500');
 my $obj = MARC::Field008->new(
 	'leader' => $leader,
 );
