@@ -19,5 +19,6 @@ README
 t/MARC-Field008/01-use.t
 t/MARC-Field008/02-version.t
 t/MARC-Field008/03-new.t
+t/MARC-Field008/04-parse.t
 xt/MARC-Field008/01-pod_coverage.t
 xt/MARC-Field008/02-pod.t
