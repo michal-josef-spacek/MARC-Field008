@@ -36,6 +36,7 @@ resources 'homepage' => 'https://github.com/michal-josef-spacek/MARC-Field008';
 resources 'repository' => 'git://github.com/michal-josef-spacek/MARC-Field008';
 test_requires 'English' => 0;
 test_requires 'Error::Pure::Utils' => 0;
+test_requires 'MARC::Leader' => 0;
 test_requires 'Test::MockObject' => 0;
 test_requires 'Test::More' => 0;
 test_requires 'Test::NoWarnings' => 0;
