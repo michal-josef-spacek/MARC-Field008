@@ -258,23 +258,80 @@ sub _parse_different {
 sub _serialize_different {
 	my ($self, $material) = @_;
 
-	# Book
-	# TODO Remove
-	my $ret = (' ' x 16);
+	my $ret;
 	if ($material->isa('Data::MARC::Field008::Book')) {
-		# TODO
+		$ret = $material->illustrations.
+			$material->target_audience.
+			$material->form_of_item.
+			$material->nature_of_content.
+			$material->government_publication.
+			$material->conference_publication.
+			$material->festschrift.
+			$material->index.
+			' '.
+			$material->literary_form.
+			$material->biography;
+
 	} elsif ($material->isa('Data::MARC::Field008::ComputerFile')) {
-		# TODO
+		$ret = (' ' x 4).
+			$material->target_audience.
+			$material->form_of_item.
+			(' ' x 2).
+			$material->type_of_computer_file.
+			' '.
+			$material->government_publication.
+			(' ' x 6);
 	} elsif ($material->isa('Data::MARC::Field008::ContinuingResource')) {
-		# TODO
+		$ret = $material->frequency.
+			$material->regularity.
+			' '.
+			$material->type_of_continuing_resource.
+			$material->form_of_original_item.
+			$material->form_of_item.
+			$material->nature_of_entire_work.
+			$material->nature_of_content.
+			$material->government_publication.
+			$material->conference_publication.
+			(' ' x 3).
+			$material->original_alphabet_or_script_of_title.
+			$material->entry_convention;
 	} elsif ($material->isa('Data::MARC::Field008::Map')) {
-		# TODO
+		$ret = $material->relief.
+			$material->projection.
+			' '.
+			$material->type_of_cartographic_material.
+			(' ' x 2).
+			$material->government_publication.
+			$material->form_of_item.
+			' '.
+			$material->index.
+			' '.
+			$material->special_format_characteristics;
 	} elsif ($material->isa('Data::MARC::Field008::MixedMaterial')) {
-		$ret = (' ' x 5).$material->form_of_item.(' ' x 10);
+		$ret = (' ' x 5).
+			$material->form_of_item.
+			(' ' x 10);
 	} elsif ($material->isa('Data::MARC::Field008::Music')) {
-		# TODO
+		$ret = $material->form_of_composition.
+			$material->format_of_music.
+			$material->music_parts.
+			$material->target_audience.
+			$material->form_of_item.
+			$material->accompanying_matter.
+			$material->literary_text_for_sound_recordings.
+			' '.
+			$material->transposition_and_arrangement.
+			' ';
 	} elsif ($material->isa('Data::MARC::Field008::VisualMaterial')) {
-		# TODO
+		$ret = $material->running_time_for_motion_pictures_and_videorecordings.
+			' '.
+			$material->target_audience.
+			(' ' x 5).
+			$material->government_publication.
+			$material->form_of_item.
+			(' ' x 3).
+			$material->type_of_visual_material.
+			$material->technique;
 	}
 
 	return $ret;
