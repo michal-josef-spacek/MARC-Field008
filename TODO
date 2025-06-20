@@ -3,7 +3,8 @@ TODO
 3. Finish serialization.
 4. Doc.
 5. Tests.
-6.
+6. 'leader' parameter to not required. Move check to parse() method.
+7.
 
 Applied
 =======
