@@ -1,4 +1,6 @@
 Changes
+examples/parse_example.pl
+examples/serialize_example.pl
 Field008.pm
 inc/Module/Install.pm
 inc/Module/Install/AuthorRequires.pm

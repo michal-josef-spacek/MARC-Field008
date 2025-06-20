@@ -21,6 +21,7 @@ meta-spec:
 name: MARC-Field008
 no_index:
   directory:
+    - examples
     - inc
     - t
     - xt

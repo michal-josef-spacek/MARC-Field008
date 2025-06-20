@@ -340,3 +340,239 @@ sub _serialize_different {
 1;
 
 __END__
+
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+MARC::Field008 - Class for parsing and serialization of MARC field 008.
+
+=head1 SYNOPSIS
+
+ use MARC::Field008;
+
+ my $obj = MARC::Field008->new(%params);
+ my $data_obj = $cnf->parse($field_008);
+ my $field_008 = $cnf->serialize($data_obj);
+
+=head1 METHODS
+
+=head2 C<new>
+
+ my $obj = MARC::Field008->new(%params);
+
+Constructor.
+
+=over 8
+
+=item * C<leader>
+
+MARC leader string.
+
+It's required.
+
+Default is undef.
+
+=item * C<verbose>
+
+Verbose mode.
+
+Default is 0.
+
+=back
+
+Returns instance of object.
+
+=head2 C<parse>
+
+ my $data_obj = $cnf->parse($field_008);
+
+Parse MARC field 008 string to data object.
+
+Returns instance of L<Data::MARC::Field008>.
+
+=head2 C<serialize>
+
+ my $field_008 = $cnf->serialize($data_obj);
+
+Serialize L<Data::MARC::Field008> object to string..
+
+Returns string.
+
+=head1 ERRORS
+
+ new():
+         From Mo::utils::check_bool():
+                 Parameter 'verbose' must be a bool (0/1).
+                         Value: %s
+         From Mo::utils::check_isa():
+                 Parameter 'leader' must be a 'Data::MARC::Leader' object.
+                         Value: %s
+                         Reference: %s
+         From Mo::utils::check_required():
+                 Parameter 'leader' is required.
+         From Class::Utils::set_params():
+                 Unknown parameter '%s'.
+
+ parse():
+         Bad length of MARC 008 field.
+                 Length: %s
+
+         Errors from L<Data::MARC::Field008>, see documentation.
+
+ serialize():
+         Bad 'Data::MARC::Field008' instance to serialize.
+
+=head1 EXAMPLE1
+
+=for comment filename=parse_example.pl
+
+ use strict;
+ use warnings;
+
+ use MARC::Field008;
+ use MARC::Leader;
+ use Data::Printer;
+
+ # Object.
+ my $leader = MARC::Leader->new->parse('     nam a22        4500');
+ my $obj = MARC::Field008->new(
+         'leader' => $leader,
+ );
+
+ # Parse.
+ my $data = $obj->parse('830304s1982    xr a         u0|0 | cze  ');
+
+ # Dump.
+ p $data;
+
+ # Output:
+ # Data::MARC::Field008  {
+ #     parents: Mo::Object
+ #     public methods (13):
+ #         BUILD
+ #         Data::MARC::Field008::Utils:
+ #             check_cataloging_source, check_date, check_modified_record, check_type_of_date
+ #         Error::Pure:
+ #             err
+ #         Error::Pure::Utils:
+ #             err_get
+ #         Mo::utils:
+ #             check_isa, check_length_fix, check_number, check_required, check_strings
+ #         Readonly:
+ #             Readonly
+ #     private methods (0)
+ #     internals: {
+ #         cataloging_source      " ",
+ #         date_entered_on_file   830304,
+ #         date1                  1982,
+ #         date2                  "    ",
+ #         language               "cze",
+ #         material               Data::MARC::Field008::Book,
+ #         material_type          "book",
+ #         modified_record        " ",
+ #         place_of_publication   "xr ",
+ #         raw                    "830304s1982    xr a         u0|0 | cze  " (dualvar: 830304),
+ #         type_of_date           "s"
+ #     }
+ # }
+
+=head1 EXAMPLE2
+
+=for comment filename=serialize_example.pl
+
+ use strict;
+ use warnings;
+
+ use MARC::Field008;
+ use MARC::Leader;
+ use Data::MARC::Field008;
+ use Data::MARC::Field008::Book;
+
+ # Object.
+ my $leader = MARC::Leader->new->parse('     nam a22        4500');
+ my $obj = MARC::Field008->new(
+         'leader' => $leader,
+ );
+
+ # Data.
+ my $material = Data::MARC::Field008::Book->new(
+         'biography' => ' ',
+         'conference_publication' => '0',
+         'festschrift' => '0',
+         'form_of_item' => 'r',
+         'government_publication' => ' ',
+         'illustrations' => '    ',
+         'index' => '0',
+         'literary_form' => '0',
+         'nature_of_content' => '    ',
+         'target_audience' => ' ',
+ );
+ my $data = Data::MARC::Field008->new(
+         'cataloging_source' => ' ',
+         'date_entered_on_file' => '      ',
+         'date1' => '    ',
+         'date2' => '    ',
+         'language' => 'cze',
+         'material' => $material,
+         'material_type' => 'book',
+         'modified_record' => ' ',
+         'place_of_publication' => '   ',
+         'type_of_date' => 's',
+ );
+
+ # Serialize.
+ print "'".$obj->serialize($data)."'\n";
+
+ # Output:
+ # '      s                r     000 0 cze  '
+
+=head1 DEPENDENCIES
+
+L<Class::Utils>,
+L<Data::MARC::Field008>,
+L<Data::MARC::Field008::Book>,
+L<Data::MARC::Field008::ComputerFile>,
+L<Data::MARC::Field008::ContinuingResource>,
+L<Data::MARC::Field008::Map>,
+L<Data::MARC::Field008::MixedMaterial>,
+L<Data::MARC::Field008::Music>,
+L<Data::MARC::Field008::VisualMaterial>,
+L<Error::Pure>,
+L<List::Util>,
+L<Mo::utils>,
+L<Scalar::Util>.
+
+=head1 SEE ALSO
+
+=over
+
+=item L<Data::MARC::Field008>
+
+Data object for MARC field 008.
+
+=back
+
+=head1 REPOSITORY
+
+L<https://github.com/michal-josef-spacek/MARC-Field008>
+
+=head1 AUTHOR
+
+Michal Josef Špaček L<mailto:skim@cpan.org>
+
+L<http://skim.cz>
+
+=head1 LICENSE AND COPYRIGHT
+
+© 2025 Michal Josef Špaček
+
+BSD 2-Clause License
+
+=head1 VERSION
+
+0.01
+
+=cut
