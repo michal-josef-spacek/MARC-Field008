@@ -1,4 +1,5 @@
 0.02
+ - Add tests for book material in parse().
 
 0.01 2025-06-20T11:47:20+02:00
  - First version.

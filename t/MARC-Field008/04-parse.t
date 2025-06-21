@@ -3,7 +3,7 @@ use warnings;
 
 use MARC::Leader;
 use MARC::Field008;
-use Test::More 'tests' => 73;
+use Test::More 'tests' => 84;
 use Test::NoWarnings;
 
 # Test.
@@ -22,7 +22,18 @@ is($ret->date1, '1982', 'Get date1 (1982).');
 is($ret->date2, '    ', 'Get date2 (    ).');
 is($ret->language, 'cze', 'Get language (cze).');
 isa_ok($ret->material, 'Data::MARC::Field008::Book');
-# TODO Material
+is($ret->material->biography, ' ', 'Get book material biography ( ).');
+is($ret->material->conference_publication, 0, 'Get book material conference publication (0).');
+is($ret->material->festschrift, '|', 'Get book material festschrift (|).');
+is($ret->material->form_of_item, ' ', 'Get book material form of item ( ).');
+is($ret->material->government_publication, 'u', 'Get book material government publication (u).');
+is($ret->material->illustrations, 'a   ', 'Get book material illustration (a   ).');
+is($ret->material->index, 0, 'Get book material index (0).');
+is($ret->material->literary_form, '|', 'Get book material literary form (|).');
+is($ret->material->nature_of_content, '    ', 'Get book material nature of content (    ).');
+my $material_raw = 'a         u0|0 | ';
+is($ret->material->raw, $material_raw, 'Get book material raw ('.$material_raw.').');
+is($ret->material->target_audience, ' ', 'Get book material target audience ( ).');
 is($ret->material_type, 'book', 'Get material type (book).');
 is($ret->modified_record, ' ', 'Get modified record ( ).');
 is($ret->place_of_publication, 'xr ', 'Get place of publication (xr ).');
