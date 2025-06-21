@@ -1,9 +1,11 @@
 use strict;
 use warnings;
 
+use English;
+use Error::Pure::Utils qw(clean);
 use MARC::Leader;
 use MARC::Field008;
-use Test::More 'tests' => 84;
+use Test::More 'tests' => 85;
 use Test::NoWarnings;
 
 # Test.
@@ -159,3 +161,14 @@ is($ret->modified_record, ' ', 'Get modified record ( ).');
 is($ret->place_of_publication, 'xr ', 'Get place of publication (xr ).');
 is($ret->raw, $field_008, 'Get raw ('.$field_008.').');
 is($ret->type_of_date, 's', 'Get type of date (s).');
+
+# Test.
+$leader = MARC::Leader->new->parse('01298ckm a2200385   4500');
+$obj = MARC::Field008->new(
+        'leader' => $leader,
+);
+eval {
+	$obj->parse(' ' x 41);
+};
+is($EVAL_ERROR, "Bad length of MARC 008 field.\n", "Bad length of MARC 008 field.");
+clean();
