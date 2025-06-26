@@ -5,7 +5,7 @@ use English;
 use Error::Pure::Utils qw(clean);
 use MARC::Leader;
 use MARC::Field008;
-use Test::More 'tests' => 85;
+use Test::More 'tests' => 86;
 use Test::NoWarnings;
 
 # Test.
@@ -172,3 +172,14 @@ eval {
 };
 is($EVAL_ERROR, "Bad length of MARC 008 field.\n", "Bad length of MARC 008 field.");
 clean();
+
+# Test.
+## cnb000053898
+$leader = MARC::Leader->new->parse('01261nam a2200373   4500');
+$obj = MARC::Field008->new(
+	'ignore_data_errors' => 1,
+        'leader' => $leader,
+);
+## Bad MARC, ignore errors.
+$ret = $obj->parse('900912s1990    xr a         u0|1   cze  ');
+isa_ok($ret, 'Data::MARC::Field008');
