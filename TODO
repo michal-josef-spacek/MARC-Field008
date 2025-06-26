@@ -1,7 +1,6 @@
 TODO
 ====
 5. Tests.
-6. 'leader' parameter to not required. Move check to parse() method.
 7.
 
 Applied
@@ -17,3 +16,6 @@ OK [20250620] skim
 
 3. Finish serialization.
 OK [20250620] skim
+
+6. 'leader' parameter to not required. Move check to parse() method.
+OK [20250626] skim

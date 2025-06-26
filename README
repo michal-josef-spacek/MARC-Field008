@@ -26,7 +26,7 @@ METHODS
 
             MARC leader string.
 
-            It's required.
+            It's required for parse() method only.
 
             Default is undef.
 
@@ -65,13 +65,15 @@ ERRORS
                              Reference: %s
              From Mo::utils::check_required():
                      Parameter 'ignore_data_errors' is required.
-                     Parameter 'leader' is required.
              From Class::Utils::set_params():
                      Unknown parameter '%s'.
 
      parse():
              Bad length of MARC 008 field.
                      Length: %s
+
+             From Mo::utils::check_required():
+                     Parameter 'leader' is required.
 
              Errors from L<Data::MARC::Field008>, see documentation.
 
