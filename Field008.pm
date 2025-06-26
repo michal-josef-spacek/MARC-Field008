@@ -386,7 +386,7 @@ Default value is 0.
 
 =item * C<leader>
 
-MARC leader string.
+MARC leader in L<Data::MARC::Leader> instance.
 
 It's required for parse() method only.
 

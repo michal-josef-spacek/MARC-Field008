@@ -24,7 +24,7 @@ METHODS
 
     *       "leader"
 
-            MARC leader string.
+            MARC leader in Data::MARC::Leader instance.
 
             It's required for parse() method only.
 
