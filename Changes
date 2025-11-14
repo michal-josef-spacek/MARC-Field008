@@ -1,4 +1,4 @@
-0.04
+0.04 2025-11-14T16:12:35+01:00
  - API change: Parameter 'leader' isn't required in constructor. Only for
    parse() method.
  - Add ACKNOWLEDGEMENTS section to doc.
