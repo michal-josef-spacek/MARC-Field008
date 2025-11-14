@@ -17,7 +17,7 @@ use List::Util 1.33 qw(any);
 use Mo::utils 0.08 qw(check_bool check_isa check_required);
 use Scalar::Util qw(blessed);
 
-our $VERSION = 0.04;
+our $VERSION = 0.05;
 
 # Constructor.
 sub new {
@@ -602,6 +602,6 @@ the Czech Republic (DKRVO 2024–2028), Area 11: Linked Open Data.
 
 =head1 VERSION
 
-0.04
+0.05
 
 =cut
